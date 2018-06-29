@@ -57,6 +57,7 @@ defmodule DurableWorkflow.Session do
     newest_job_of_type = [DurableWorkflow.sessions_dir(), "#{job_name}-*"]
     |> Path.join()
     |> Path.wildcard()
+    |> Enum.map(&Path.basename/1)
     |> Enum.sort(&(&1 <= &2))
     |> List.first
 
