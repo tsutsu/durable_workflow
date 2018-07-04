@@ -14,7 +14,7 @@ defmodule DurableWorkflow.Session do
   def new({job, job_name}, job_opts) do
     began_at = DateTime.utc_now()
 
-    session_name = [job_name, Timex.format!(began_at, "{ASN1:GeneralizedTime}")] |> Enum.join("-")
+    session_name = [job_name, asn1_generalized_time(began_at)] |> Enum.join("-")
 
     session_path = Path.join(DurableWorkflow.sessions_dir(), session_name)
 
@@ -124,5 +124,10 @@ defmodule DurableWorkflow.Session do
 
   defp session_file_path(session_path) do
     Path.join(session_path, "session.etf")
+  end
+
+  defp asn1_generalized_time(%DateTime{year: y, month: m, day: d, hour: h, minute: i, second: s}) do
+    :io_lib.format("~4..0b~2..0b~2..0b~2..0b~2..0b~2..0b", [y, m, d, h, i, s])
+    |> :erlang.iolist_to_binary()
   end
 end

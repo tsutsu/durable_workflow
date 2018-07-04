@@ -57,7 +57,7 @@ Add `durable_workflow` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:durable_workflow, "~> 0.1.1"}
+    {:durable_workflow, "~> 0.1.2"}
   ]
 end
 ```

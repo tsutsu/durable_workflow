@@ -3,7 +3,7 @@ defmodule DurableWorkflow.MixProject do
 
   def project, do: [
     app: :durable_workflow,
-    version: "0.1.1",
+    version: "0.1.2",
     elixir: "~> 1.6",
     description: description(),
     package: package(),
@@ -28,7 +28,6 @@ defmodule DurableWorkflow.MixProject do
   ]
 
   defp deps, do: [
-    {:timex, "~> 3.3"},
     {:ex_doc, ">= 0.0.0", only: :dev}
   ]
 end
